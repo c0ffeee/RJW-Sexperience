@@ -19,10 +19,25 @@ namespace RJWSexperience
     {
         public static void Postfix(PawnGenerationRequest request, ref Pawn __result)
         {
+            if (Configurations.EnableRecordRandomizer == false) Log.Warning("Enable Record Randomizer is false");
+            if (__result == null) Log.Warning("pawn result is null");
+            if (!request.Newborn) Log.Warning("pawn result is not newborn");
+            if (xxx.is_human(__result)) Log.Warning("Pawn is not human");
+
             if (Configurations.EnableRecordRandomizer && __result != null && !request.Newborn && xxx.is_human(__result))
             {
                 int avgsex = -500;
                 bool isvirgin = Rand.Chance(Configurations.VirginRatio);
+
+                if(isvirgin)
+                {
+                    Log.Warning("passed virgin roll");
+                }
+                else
+                {
+                    Log.Message("Randomizing " + __result.Name + " sex acts...");
+                }
+
                 int totalsex = 0;
                 int totalbirth = 0;
                 int deviation = (int)Configurations.MaxSexCountDeviation;
