@@ -197,7 +197,7 @@ namespace RJWSexperience
                 if (bucket != null)
                 {
                     __result.Clear();
-                    __result = JobMaker.MakeJob(xxx.Masturbate, null, null, bucket.RandomAdjacentCell8Way());
+                    __result = JobMaker.MakeJob(xxx.Masturbate, pawn, null, bucket.RandomAdjacentCell8Way());
                 }
             }
 
